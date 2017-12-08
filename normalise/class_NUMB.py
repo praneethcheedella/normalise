@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+ # editted by praneeth
 from __future__ import division, print_function, unicode_literals
 
 import sys
@@ -386,6 +386,8 @@ def gen_frame(dict_tup, text):
                 tup += (text[i],)
     else:
         rind = round(ind)
+        if rind >= len(text): # added an if loop to prevent index out of range exception
+            rind = int(ind)   # because if the value of ind was 12.5 and int(ind)= 13 and it is greater than the string length gives out a index out of range exception
         full = text[rind]
         start = ''
         end = ''

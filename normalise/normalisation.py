@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-
+# editted by praneeth
 from __future__ import division, print_function, unicode_literals
 
+import pdb
 import pickle
 from io import open
 
@@ -101,9 +102,9 @@ def tokenize_basic(text):
         elif guess[i].isalpha():
             out.append(guess[i])
         elif guess[i][0] in ['(', '[', '{']:
-            if guess[i][1] in [')', ']', '}']:
-                out.extend([guess[i][0], guess[i][1:-1], guess[i][-1]])
-            else:
+            if len(guess[i]) > 1 and guess[i][1] in [')', ']', '}']:  # added an if condition to make sure the value of guess is greater than 1
+                out.extend([guess[i][0], guess[i][1:-1], guess[i][-1]]) # Guess stores the alphanumeric character and if the index value is less than 1
+            else:                                                       # it gives a index out of range exception
                 out.extend([guess[i][0], guess[i][1:]])
         elif guess[i][-1] in [')', ']', '}']:
                 out.extend([guess[i][:-1], guess[i][-1]])
